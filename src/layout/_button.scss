@@ -1,0 +1,47 @@
+.btn,
+.btn-outline {
+	display: inline-block;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border: 1px solid var(--btn-bg-active);
+	transition: all var(--transition-speed);
+	overflow: hidden;
+	border-radius: var(--border-radius);
+	background: var(--btn-bg-color);
+	color: var(--btn-font-color);
+
+	&:hover,
+	&:focus{
+		text-decoration: none;
+		background: var(--btn-bg-active);
+	}
+
+	&:disabled {
+		opacity: .5;
+		pointer-events: none;
+	}
+
+	&:not(:disabled):not(.disabled) {
+		cursor: pointer;
+	}
+}
+
+@each $color,$value in $colors {
+	.btn.#{$color}{
+		--btn-bg: var(--color-#{$color});
+		--btn-bg-active: var(--color-#{$color}-dark);
+		--btn-font-color: var(--font-color);
+	}
+
+	.btn-outline.#{$color}{
+		--btn-bg: var(--bg-color);
+		--btn-bg-active: var(--color-#{$color});
+		--btn-font-color: var(--color-#{$color});
+
+		&:hover{
+			--btn-font-color: var(--font-color);
+		}
+	}
+}

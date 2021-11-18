@@ -1,0 +1,39 @@
+$colors:(
+	primary: #124edd,
+	secondary: #797979,
+	info: #4daeae,
+	success: #2fb52f,
+	warning: #b3b025,
+	danger: #f00a0a
+);
+
+$colors-dark:(
+	primary: darken(map-get($colors,"primary"), 5),
+	secondary: darken(map-get($colors,"secondary"), 5),
+	info: darken(map-get($colors,"info"), 5),
+	success: darken(map-get($colors,"success"), 5),
+	warning: darken(map-get($colors,"warning"), 5),
+	danger: darken(map-get($colors,"danger"), 5)
+);
+
+$colors-light:(
+	primary: lighten(map-get($colors,"primary"), 5),
+	secondary: lighten(map-get($colors,"secondary"), 5),
+	info: lighten(map-get($colors,"info"), 5),
+	success: lighten(map-get($colors,"success"), 5),
+	warning: lighten(map-get($colors,"warning"), 5),
+	danger: lighten(map-get($colors,"danger"), 5)
+);
+
+$breakpoints: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1400px
+);
+
+$zindex-dropdown: 1000;
+$zindex-modal: 1020;
+$zindex-popover: 1040;
+$zindex-tooltip: 1080;

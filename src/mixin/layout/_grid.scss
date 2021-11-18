@@ -1,0 +1,27 @@
+@mixin create-grid($grid-columns, $breakpoints: $breakpoints){
+
+	@include do-grid($grid-columns, "");
+
+	@each $breakpoint,$breakpointValue in $breakpoints{
+		@include apply-breakpoint($breakpointValue){
+			@include do-grid($grid-columns, $breakpoint+"\\:");
+		}
+	}
+}
+
+@mixin do-grid($grid-columns, $prefix){
+	@for $i from 1 to $grid-columns+1{
+		.#{$prefix}cols-#{$i}{
+			-ms-grid-columns: repeat(#{$i}, 1fr);
+			grid-template-columns: repeat(#{$i}, 1fr);
+		}
+	}
+}
+
+@mixin assign-template-areas($grid-template-areas){
+	@each $template-area, $value in $grid-template-areas{
+		body > #{$template-area}{
+			grid-area: #{$value};
+		}
+	}
+}

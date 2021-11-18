@@ -1,0 +1,13 @@
+
+.progress {
+  display: flex;
+  overflow: hidden; // force rounded corners by cropping it
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}

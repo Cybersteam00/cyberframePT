@@ -1,0 +1,36 @@
+@mixin create-spacing($spaces){
+	@include apply-spacing($spaces, "", "p", "padding");
+	@include apply-spacing($spaces, "", "m", "margin");
+	@each $breakpoint,$value in $breakpoints{
+		@include apply-breakpoint($value){
+			@include apply-spacing($spaces, $breakpoint+"\\:", "p", "padding");
+			@include apply-spacing($spaces, $breakpoint+"\\:", "m", "margin");
+		}
+	}
+}
+
+@mixin apply-spacing($spaces, $prefix, $a, $b){
+	@each $space,$spaceValue in $spaces{
+		.#{$prefix}#{$a}-#{$space}{
+			#{$b}: #{$spaceValue} !important;
+		}
+		.#{$prefix}#{$a}x-#{$space}{
+			#{$b}: 0 #{$spaceValue} !important;
+		}
+		.#{$prefix}#{$a}y-#{$space}{
+			#{$b}: #{$spaceValue} 0 !important;
+		}
+		.#{$prefix}#{$a}t-#{$space}{
+			#{$b}-top: #{$spaceValue} !important;
+		}
+		.#{$prefix}#{$a}b-#{$space}{
+			#{$b}-bottom: #{$spaceValue} !important;
+		}
+		.#{$prefix}#{$a}r-#{$space}{
+			#{$b}-right: #{$spaceValue} !important;
+		}
+		.#{$prefix}#{$a}l-#{$space}{
+			#{$b}-left: #{$spaceValue} !important;
+		}
+	}
+}

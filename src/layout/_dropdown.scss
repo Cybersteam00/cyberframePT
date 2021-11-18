@@ -1,0 +1,22 @@
+.dropdown{
+	position: relative;
+
+	> .label{
+		padding: .25rem;
+	}
+
+	> .menu{
+		display: none;
+		position: absolute;
+		width: 100%;
+		z-index: $zindex-dropdown;
+		color: var(--font-color);
+		background-color: var(--bg-color);
+	}
+
+	&:hover{
+		> .menu{
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+@mixin create-display($displays){
+	@include apply-display($displays, "");
+	@each $breakpoint,$value in $breakpoints{
+		@include apply-breakpoint($value){
+			@include apply-display($displays, $breakpoint+"\\:");
+		}
+	}
+}
+
+@mixin apply-display($displays, $prefix){
+	@each $display,$value in $displays{
+		.#{$prefix}d-#{$display}{
+			display: #{$value} !important;
+		}
+	}
+}

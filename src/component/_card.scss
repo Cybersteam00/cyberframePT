@@ -1,0 +1,32 @@
+.card {
+	min-width: 0;
+	word-wrap: break-word;
+	background-clip: border-box;
+	border: 1px solid var(--bg-color-active);
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	box-shadow: var(--box-shadow);
+	border-color: var(--card-border-color);
+
+	> .header{
+		padding: .5rem;
+		background: var(--card-bg-color);
+		color: var(--card-font-color);
+	}
+
+	> .body {
+		padding: .5rem;
+	}
+
+	> .footer {
+		padding: .5rem;
+	}
+}
+
+@each $color,$value in $colors{
+	.card.#{$color}{
+		--card-bg-color: var(--color-#{$color});
+		--card-font-color: var(--font-color);
+		--card-border-color: var(--color-#{$color}-dark);
+	}
+}

@@ -1,0 +1,9 @@
+.form-control{
+	display: flex;
+	overflow: hidden;
+	border-radius: var(--border-radius);
+	
+	input, select{
+		flex-grow: 1;
+	}
+}

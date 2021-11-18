@@ -1,0 +1,13 @@
+.menu{
+	list-style-type: none;
+	display: flex;
+}
+
+.menu-item{
+	display: block;
+	padding: .5rem;
+}
+
+.menu-item:hover{
+	background-color: var(--color-ghost);
+}

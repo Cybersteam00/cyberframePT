@@ -1,0 +1,323 @@
+$headers: (
+	h1: 2.5em,
+	h2: 2em,
+	h3: 1.75em,
+	h4: 1.5em,
+	h5: 1.25em,
+	h6: 1em
+);
+
+html{
+	@each $color,$value in $colors{
+		--color-#{$color}: #{$value};
+	}
+	@each $color,$value in $colors-dark{
+		--color-#{$color}-dark: #{$value};
+	}
+	@each $color,$value in $colors-light{
+		--color-#{$color}-light: #{$value};
+	}
+	--color-ghost: #00000050;
+	--box-shadow: #0009 5px 5px 20px -10px;
+	--border-radius: 4px;
+	--transition-speed: .7s;
+	--bg-color: #2c2c2c;
+	--font-color: #e7e7e7;
+	--bg-color-active: #d3d3d3;
+	--font-color-active: #3a3a3a;
+
+	--font-size: 1rem;
+	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-weight: 400;
+	@each $header,$value in $headers{
+		--font-size-#{$header}: #{$value};
+	}
+
+	background-color: var(--bg-color);
+	font-family: var(--font-family);
+	font-weight: var(--font-weight);
+	color: var(--font-color);
+}
+
+*,
+*::after,
+*::before{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	display: grid;
+	text-align: left;
+	grid-template-areas: 'header''nav''main''footer';
+	grid-template-rows: auto auto 1fr auto;
+}
+
+nav{
+	display: flex;
+}
+
+[tabindex="-1"]:focus {
+	outline: 0 !important;
+}
+
+a{
+	color: var(--font-color);
+}
+
+@each $header,$value in $headers{
+	#{$header},.#{$header}{
+		font-size: var(--font-size-#{$header});
+	}
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: .5rem;
+}
+
+abbr[title],
+abbr[data-original-title] {
+	text-decoration: underline;
+	text-decoration: underline dotted;
+	cursor: help;
+	border-bottom: 0;
+}
+
+address {
+	margin-bottom: 1rem;
+	font-style: normal;
+	line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+	margin-top: 0;
+	margin-bottom: .5rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+	margin-bottom: 0;
+}
+
+dt {
+  font-weight: var(--font-weight);
+}
+
+dd {
+  margin-bottom: .25rem;
+  margin-left: 0;
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+dfn {
+  font-style: italic;
+}
+
+// stylelint-disable font-weight-notation
+b,
+strong {
+  font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
+}
+// stylelint-enable font-weight-notation
+
+small {
+  font-size: .8em; // Add the correct font size in all browsers
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: .75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub { bottom: -.25em; }
+sup { top: -.5em; }
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+	&:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+pre,
+code,
+kbd,
+samp {
+  // font-family: $font-family-monospace;
+  font-size: 1em; // Correct the odd `em` font sizing in all browsers.
+}
+
+pre {
+  // Remove browser default top margin
+  margin-top: 0;
+  // Reset browser default of `1em` to use `rem`s
+  margin-bottom: 1rem;
+  // Don't allow content to break outside
+  overflow: auto;
+  // We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so
+  // we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+  -ms-overflow-style: scrollbar;
+}
+
+figure {
+  // Apply a consistent margin strategy (matches our type styles).
+  margin: 0 0 1rem;
+}
+
+img {
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse; // Prevent double borders
+}
+
+caption {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  // color: $text-muted;
+  text-align: left;
+  caption-side: bottom;
+}
+
+th {
+  text-align: inherit;
+}
+
+label {
+  // Allow labels to use `margin` for spacing.
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+button {
+  border-radius: 0;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0; // Remove the margin in Firefox and Safari
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: .5rem;
+}
+
+button,
+input {
+  overflow: visible; // Show the overflow in Edge
+}
+
+button,
+select {
+  text-transform: none; // Remove the inheritance of text transform in Firefox
+}
+
+button,
+html [type="button"], // 1
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; // 2
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  -webkit-appearance: listbox;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  min-width: 0;
+  // Reset the default outline behavior of fieldsets so they don't affect page layout.
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+// 1. Correct the text wrapping in Edge and IE.
+legend {
+  display: block;
+  width: 100%;
+  max-width: 100%; // 1
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+  white-space: normal; // 1
+}
+
+progress {
+  vertical-align: baseline; // Add the correct vertical alignment in Chrome, Firefox, and Opera.
+}
+
+// Correct the cursor style of increment and decrement buttons in Chrome.
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  outline-offset: -2px; // 2. Correct the outline style in Safari.
+  -webkit-appearance: none;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  font: inherit; // 2
+  -webkit-appearance: button; // 1
+}
+
+output {
+  display: inline-block;
+}
+
+summary {
+  display: list-item; // Add the correct display in all browsers
+  cursor: pointer;
+}

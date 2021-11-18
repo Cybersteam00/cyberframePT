@@ -1,0 +1,18 @@
+$grid-columns: 6;
+$grid-gap: .5rem;
+
+$grid-template-areas: (
+	header: "header",
+	main: "main",
+	footer: "footer",
+	nav: "nav"
+);
+
+@include assign-template-areas($grid-template-areas);
+
+[class*="cols-"]{
+	display: grid;
+	grid-gap: .5rem;
+}
+
+@include create-grid($grid-columns);
